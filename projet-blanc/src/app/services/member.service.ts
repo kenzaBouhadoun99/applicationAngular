@@ -7,7 +7,7 @@ import {Role} from '../models/role';
 })
 export class MemberService {
 
-  private readonly members = signal<Member[]>([
+  members = signal<Member[]>([
 
     {
       id: 1,

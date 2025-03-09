@@ -1,0 +1,16 @@
+.member-card {
+  width: 400px;
+  padding: 1rem;
+  background-color: orange;
+
+  .member-card-lastname {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+  }
+
+  .member-card-firstname {
+    font-size: 1.2em;
+    color: white;
+  }
+}

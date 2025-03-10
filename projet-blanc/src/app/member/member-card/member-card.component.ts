@@ -1,21 +1,34 @@
-import {Component, input} from '@angular/core';
-import {Member} from '../../models/member.model';
-import {MatCardModule} from '@angular/material/card';
-import {RouterLink} from '@angular/router';
-import {MatButton} from '@angular/material/button';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Member } from '../../models/member.model';
+import { MatCardModule } from '@angular/material/card';
+import { RouterLink } from '@angular/router';
+import { MatButton } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-member-card',
+  standalone: true,
   imports: [
     MatCardModule,
     RouterLink,
-    MatButton
+    MatButton,
+    CommonModule
   ],
   templateUrl: './member-card.component.html',
-  styleUrl: './member-card.component.scss'
+  styleUrls: ['./member-card.component.scss']
 })
 export class MemberCardComponent {
+  @Input() member!: Member;
+  @Output() deleteMember = new EventEmitter<number>(); // <-- Événement pour la suppression
+  isExpanded = false;
 
-  member = input.required<Member>();
+  toggleExpand() {
+    this.isExpanded = !this.isExpanded;
+  }
 
+  onDelete() {
+    if (confirm(`Voulez-vous vraiment supprimer ${this.member.firstName} ${this.member.lastName} ?`)) {
+      this.deleteMember.emit(this.member.id); // <-- Émet l'ID du membre à supprimer
+    }
+  }
 }

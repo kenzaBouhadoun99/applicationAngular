@@ -1,1 +1,44 @@
-<p>new-member works!</p>
+<mat-card class="new-member-card">
+    <mat-card-title>Ajouter un membre</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" #memberForm="ngForm">
+        <mat-form-field class="full-width">
+          <mat-label>Prénom</mat-label>
+          <input matInput [(ngModel)]="member.firstName" name="firstName" required />
+        </mat-form-field>
+  
+        <mat-form-field class="full-width">
+          <mat-label>Nom</mat-label>
+          <input matInput [(ngModel)]="member.lastName" name="lastName" required />
+        </mat-form-field>
+  
+        <mat-form-field class="full-width">
+          <mat-label>Date de naissance</mat-label>
+          <input matInput type="date" [(ngModel)]="member.birthday" name="birthday" required />
+        </mat-form-field>
+  
+        <mat-form-field class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" [(ngModel)]="member.email" name="email" required />
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Role</mat-label>
+          <mat-select [(value)]="member.role">
+            <mat-option *ngFor="let role of roleKeys" [value]="role">
+              {{ role }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+  
+        <div class="buttons">
+          <button mat-raised-button color="primary" type="submit" [disabled]="memberForm.invalid">
+            Ajouter
+          </button>
+          <button mat-raised-button color="warn" type="button" (click)="cancel()">Annuler</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

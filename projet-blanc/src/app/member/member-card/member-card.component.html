@@ -1,12 +1,22 @@
-<mat-card class="member-card m-2">
-  <mat-card-header>
-    <img mat-card-avatar src="https://picsum.photos/150/150" alt="Photo de profil"/>
-    <mat-card-title class="member-card-lastname">{{ member().lastName }} {{ member().firstName }}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="d-flex justify-content-end">
-      <button mat-raised-button color="primary" class="mx-1">Modifier</button>
-      <button mat-raised-button color="primary" class="mx-1">Supprimer</button>
-    </div>
-  </mat-card-content>
-</mat-card>
+<div class="card-container">
+  <mat-card class="member-card m-2">
+    <mat-card-header>
+      <img mat-card-avatar src="https://picsum.photos/150/150" alt="Photo de profil"/>
+      <mat-card-title>
+        <span class="member-card-lastname">{{ member.lastName }}</span>
+        <span class="member-card-firstname">{{ member.firstName }}</span>
+        <span class="member-card-role">{{ member.role }}</span>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="isExpanded">
+        <p><strong>Date de naissance :</strong> {{ member.birthday | date:'shortDate' }}</p>
+        <p><strong>Email :</strong> {{ member.email }}</p>
+      </div>
+      <div class="button-group">
+        <button mat-raised-button color="warn" (click)="onDelete()">Supprimer</button> 
+        <button mat-raised-button color="accent" [routerLink]="['/member-details', member.id]">Voir plus</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

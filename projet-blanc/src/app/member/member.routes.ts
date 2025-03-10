@@ -16,6 +16,7 @@ export const routes: Routes = [
     path: ':id',
     component: MemberDetailsComponent
   },
+  { path: 'member-details/:id', component: MemberDetailsComponent },
   {
     path: '**',
     redirectTo: ''

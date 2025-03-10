@@ -1,16 +1,52 @@
-.member-card {
-  width: 400px;
-  padding: 1rem;
-  background-color: orange;
+
+  .card-container {
+    display: flex;
+    gap: 10px;
+    width: 100%; 
+    align-items: center;
+    
+  }
+
+  .member-card {
+    width: 100%; 
+    background-color: #2294d2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  mat-card-header {
+    display: flex;
+    align-items: center;
+  }
+
+  mat-card-avatar {
+    border: 2px solid #007bff;
+  }
+
+  mat-card-title {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+  }
 
   .member-card-lastname {
     font-size: 1.5em;
     font-weight: bold;
-    color: white;
+    color: #333333;
   }
 
   .member-card-firstname {
     font-size: 1.2em;
-    color: white;
+    color: #555555;
   }
-}
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  button {
+    min-width: 120px;
+  }

@@ -1,6 +1,11 @@
-<h1>Liste des membres</h1>
+<!-- Liste des membres -->
 <div class="d-flex justify-content-start flex-wrap">
   @for (member of this.memberService.members(); track member.id) {
-      <app-member-card [member]="member"></app-member-card>
+    <app-member-card [member]="member" (deleteMember)="deleteMember($event)"></app-member-card>
   }
 </div>
+
+<!-- Bouton pour ajouter un membre -->
+<button mat-raised-button color="primary" class="floating-button" (click)="navigateToAddMember()">
+  ➕ Ajouter un membre
+</button>

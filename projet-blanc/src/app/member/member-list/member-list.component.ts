@@ -24,12 +24,12 @@ export class MemberListComponent implements OnInit {
   members = computed(() => this.memberService.members());
 
   ngOnInit() {
-    this.memberService.getAll(); // Charger les membres au démarrage
+    this.memberService.getAll(); 
   }
 
   deleteMember(id: number) {
     if (confirm('Voulez-vous vraiment supprimer ce membre ?')) {
-      this.memberService.delete(id);
+      this.memberService.delete(id); 
     }
   }
 

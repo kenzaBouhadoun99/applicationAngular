@@ -7,23 +7,23 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';  
-import { MatOptionModule } from '@angular/material/core'; // Importez MatOptionModule ici
+import { MatOptionModule } from '@angular/material/core'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { CommonModule } from '@angular/common';  // Ajoutez CommonModule
+import { CommonModule } from '@angular/common';  
 
 @Component({
   selector: 'app-new-member',
   standalone: true,
   imports: [
-    CommonModule,           // Import de CommonModule pour utiliser ngFor
-    FormsModule,            // ✅ Pour utiliser ngForm
-    ReactiveFormsModule,    // ✅ Pour les formulaires réactifs
+    CommonModule,           
+    FormsModule,            
+    ReactiveFormsModule,    
     MatCardModule,          
     MatButtonModule,        
     MatInputModule,
     MatSelectModule,        
-    MatOptionModule         // Ajoutez MatOptionModule pour le mat-option
+    MatOptionModule         
   ],
   templateUrl: './new-member.component.html',
   styleUrl: './new-member.component.scss'
@@ -35,7 +35,7 @@ export class NewMemberComponent {
     lastName: '',
     birthday: new Date(),
     email: '',
-    role: Role.Admin // Valeur par défaut
+    role: Role.Admin 
   };
 
   // Récupérer les valeurs de l'enum pour l'affichage
@@ -45,8 +45,11 @@ export class NewMemberComponent {
 
   onSubmit() {
     this.memberService.create(this.member);
-    this.router.navigate(['/member']);
+    this.router.navigate(['/member']).then(() => {
+      window.location.reload(); 
+    });
   }
+  
 
   cancel() {
     this.router.navigate(['/member']);

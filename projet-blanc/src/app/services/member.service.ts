@@ -31,15 +31,20 @@ export class MemberService implements OnInit {
   }
 
   create(data: Member) {
-    if (data === undefined || data === null) {
+    if (!data) {
       console.error("Invalid data provided to create method");
       return false;
     }
-    this.httpClient.post<Member>('http://localhost:8080/api/member/create', data).subscribe(member => {})
-    this.members.update(member => [...member, data]);
+  
+    this.httpClient.post<Member>('http://localhost:8080/api/member/create', data).subscribe(member => {
+      if (member) {
+        this.members.update(members => [...members, member]);
+      }
+    });
+  
     return true;
   }
-
+  
   delete(id: number) {
     this.httpClient.delete('http://localhost:8080/api/member/delete/' + id).subscribe();
     const updatedMembers = this.members().filter(member => member.id !== id);

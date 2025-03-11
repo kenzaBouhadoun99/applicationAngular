@@ -46,10 +46,10 @@ export class MemberDetailsComponent implements OnInit {
       console.error('Membre non trouvé');
     }
   }
+  
   onDelete() {
-    if (this.member && confirm(`Voulez-vous vraiment supprimer ${this.member.firstName} ${this.member.lastName} ?`)) {
-      this.memberService.delete(this.member.id);
-      this.router.navigate(['/member']); 
-    }
+    this.memberService.delete(this.member.id);
+    this.router.navigate(['/member']); // Redirige sans demander de confirmation
   }
+  
 }

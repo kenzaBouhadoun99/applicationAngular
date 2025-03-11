@@ -1,7 +1,6 @@
 <div class="card-container">
   <mat-card class="member-card m-2">
     <mat-card-header>
-      <img mat-card-avatar src="https://picsum.photos/150/150" alt="Photo de profil"/>
       <mat-card-title>
         <span class="member-card-lastname">{{ member.lastName }}</span>
         <span class="member-card-firstname">{{ member.firstName }}</span>
@@ -15,6 +14,7 @@
       </div>
       <div class="button-group">
         <button mat-raised-button color="warn" (click)="onDelete()">Supprimer</button> 
+      <!-- <button mat-raised-button color="accent" [routerLink]="['/create', member.id]">Modifier</button>--> 
         <button mat-raised-button color="accent" [routerLink]="['/member/member-details', member.id]">Voir plus</button>
       </div>
     </mat-card-content>

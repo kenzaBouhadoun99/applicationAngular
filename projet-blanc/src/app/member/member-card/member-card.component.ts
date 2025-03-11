@@ -27,8 +27,6 @@ export class MemberCardComponent {
   }
 
   onDelete() {
-    if (confirm(`Voulez-vous vraiment supprimer ${this.member.firstName} ${this.member.lastName} ?`)) {
       this.deleteMember.emit(this.member.id); // <-- Émet l'ID du membre à supprimer
-    }
   }
 }

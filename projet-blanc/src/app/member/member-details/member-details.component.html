@@ -1,1 +1,19 @@
-<p>member-details works!</p>
+<mat-card>
+  <mat-card-header>
+    <img mat-card-avatar src="https://picsum.photos/150/150" alt="Photo de profil"/>
+    <mat-card-title>
+      <span>{{ member?.firstName }} {{ member?.lastName }}</span>
+      <span class="member-card-role">{{ member?.role }}</span>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Nom complet :</strong> {{ member?.firstName }} {{ member?.lastName }}</p>
+    <p><strong>Date de naissance :</strong> {{ member?.birthday | date:'shortDate' }}</p>
+    <p><strong>Email :</strong> {{ member?.email }}</p>
+    <p><strong>Rôle :</strong> {{ member?.role }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="warn" (click)="onDelete()">Supprimer</button>
+    <button mat-raised-button color="primary" [routerLink]="['/']">Retour</button>
+  </mat-card-actions>
+</mat-card>
